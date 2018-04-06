@@ -11,9 +11,9 @@ function Cars(image, make, model, price, link) {
   };
   this.link = link;
 }
-var conObj1 = new Cars("img/fiat500c.jpg", "fiat", "500c", 16490, "www.fiat.com");
-var conObj2 = new Cars("img/fiat500l.jpg", "ford", "500l", 20995, "www.ford.com");
-var conObj3 = new Cars("img/fiat500x.jpg", "chevy", "500x", 19995, "www.chevy.com");
+var conObj1 = new Cars("img/fiat500c.jpg", "fiat", "500c", 16490, "https://www.fiat.com/");
+var conObj2 = new Cars("img/fiat500l.jpg", "ford", "500l", 20995, "https://www.ford.com/");
+var conObj3 = new Cars("img/fiat500x.jpg", "chevy", "500x", 19995, "http://www.chevrolet.com/");
 
 // #7 Add each constructor object to an array.
 var carsArray = [conObj1, conObj2, conObj3];
@@ -27,8 +27,9 @@ for (var i = 0; i < carsArray.length; i++) {
   var newH2   = document.createElement("h2");
   var newP    = document.createElement("p");
   var newSpan = document.createElement("span");
-  var a = document.createElement("a")
-          a.setAttribute("href", newLink)
+  var a       = document.createElement("a")
+                 a.setAttribute("href", newLink)
+                 a.setAttribute("target", "_blank")
 
   console.log(newDiv, newImg, newH1, newH2, newP, newSpan);
 
@@ -39,14 +40,13 @@ for (var i = 0; i < carsArray.length; i++) {
   var newPText    = document.createTextNode("price: " + carsArray[i].price);
   var newSpanText = document.createTextNode("sales tax: " + carsArray[i].salesTax());
 
-    var a = document.createElement("a")
-          a.setAttribute("href", newLink)
+   
 
   console.log(newH1Text, newH2Text, newPText, newSpanText);
 
   // add those to the elements you created.
 
-  newH1.appendChild(a)
+  a.appendChild(newH1)
   newH1.appendChild(newH1Text);
   newH2.appendChild(newH2Text);
   newP.appendChild(newPText);
@@ -59,7 +59,7 @@ for (var i = 0; i < carsArray.length; i++) {
 
   // #12 Add the elements to the HTML so a user can view them.
   newDiv.appendChild(newImg);
-  newDiv.appendChild(newH1);
+  newDiv.appendChild(a);
   newDiv.appendChild(newH2);
   newDiv.appendChild(newP);
   newDiv.appendChild(newSpan);
